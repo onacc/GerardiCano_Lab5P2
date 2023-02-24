@@ -4,6 +4,9 @@
  */
 package gerardocano_lab6p2;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author gcano
@@ -16,6 +19,8 @@ public class Fram1 extends javax.swing.JFrame {
     public Fram1() {
         initComponents();
         setLocationRelativeTo(null);
+        Limpiar();
+        
         
     }
 
@@ -29,19 +34,252 @@ public class Fram1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jf_agregar = new javax.swing.JFrame();
+        jtxt_nombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jtxt_poder = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jcombobox_uni = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        bt_crear = new javax.swing.JButton();
+        jtxt_fuerza = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jtxt_debilidad = new javax.swing.JTextField();
+        jtxt_puntosvida = new javax.swing.JTextField();
+        jtxt_fisica = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jtxt_mental = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jf_listado = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_lista = new javax.swing.JList<>();
+        bt_regresar = new javax.swing.JButton();
+        jlabel_nombreper = new javax.swing.JLabel();
+        jf_sim = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bt_listado = new javax.swing.JButton();
+        bt_simulaicon = new javax.swing.JButton();
+
+        jtxt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_nombreActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setText("Poder:");
+
+        jtxt_poder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_poderActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Fuerza:");
+
+        jLabel6.setText("Halibidad Fisica:");
+
+        jLabel7.setText("Hablidad Mental:");
+
+        jcombobox_uni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marvel", "Capcom", "Mortal Kombat", "DC" }));
+
+        jLabel8.setText("Universo:");
+
+        bt_crear.setText("Crear");
+        bt_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crearActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Debilidad:");
+
+        jtxt_puntosvida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_puntosvidaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Puntos de vida:");
+
+        jtxt_mental.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_mentalActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Creacion de personaje");
 
         javax.swing.GroupLayout jf_agregarLayout = new javax.swing.GroupLayout(jf_agregar.getContentPane());
         jf_agregar.getContentPane().setLayout(jf_agregarLayout);
         jf_agregarLayout.setHorizontalGroup(
             jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jf_agregarLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jf_agregarLayout.createSequentialGroup()
+                        .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxt_fisica, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(jtxt_mental)))
+                    .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jf_agregarLayout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jtxt_debilidad))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jf_agregarLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jf_agregarLayout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(jtxt_poder, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jf_agregarLayout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jtxt_fuerza))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jf_agregarLayout.createSequentialGroup()
+                            .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jtxt_puntosvida)))
+                    .addGroup(jf_agregarLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(bt_crear))
+                    .addGroup(jf_agregarLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcombobox_uni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
+            .addGroup(jf_agregarLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jLabel11)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jf_agregarLayout.setVerticalGroup(
             jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jf_agregarLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jtxt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jtxt_poder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxt_fuerza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jtxt_debilidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(jtxt_puntosvida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jtxt_fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtxt_mental, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jf_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jcombobox_uni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(bt_crear)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("DC");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Marvel");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Capcom");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mortal Kombat");
+        treeNode1.add(treeNode2);
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jTree1);
+
+        jl_lista.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jl_lista);
+
+        bt_regresar.setText("Regresar");
+        bt_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_regresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jf_listadoLayout = new javax.swing.GroupLayout(jf_listado.getContentPane());
+        jf_listado.getContentPane().setLayout(jf_listadoLayout);
+        jf_listadoLayout.setHorizontalGroup(
+            jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
+                        .addComponent(bt_regresar)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
+                        .addComponent(jlabel_nombreper)
+                        .addGap(176, 176, 176))))
+        );
+        jf_listadoLayout.setVerticalGroup(
+            jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jf_listadoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jlabel_nombreper)
+                .addGap(18, 18, 18)
+                .addGroup(jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(bt_regresar)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jf_simLayout = new javax.swing.GroupLayout(jf_sim.getContentPane());
+        jf_sim.getContentPane().setLayout(jf_simLayout);
+        jf_simLayout.setHorizontalGroup(
+            jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jf_simLayout.setVerticalGroup(
+            jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -50,15 +288,20 @@ public class Fram1 extends javax.swing.JFrame {
         jLabel1.setText("Lab5P2");
 
         bt_agregar.setText("Agregar Personajes");
-
-        jButton2.setText("Listado de Personajes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_agregarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Simulacion de Batalla");
+        bt_listado.setText("Listado de Personajes");
+        bt_listado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_listadoActionPerformed(evt);
+            }
+        });
+
+        bt_simulaicon.setText("Simulacion de Batalla");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,8 +312,8 @@ public class Fram1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(236, 236, 236)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_simulaicon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_listado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_agregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(284, 284, 284)
@@ -85,19 +328,70 @@ public class Fram1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bt_agregar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(bt_listado)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(bt_simulaicon)
                 .addContainerGap(259, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bt_listadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listadoActionPerformed
+        setVisible(false);
+        jf_listado.setVisible(true);
+        jf_listado.setLocationRelativeTo(this);
+        jf_listado.setSize(700, 600);
+        jf_listado.setResizable(false);
+    }//GEN-LAST:event_bt_listadoActionPerformed
 
+    private void bt_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarActionPerformed
+        setVisible(false);
+        jf_agregar.setVisible(true);
+        jf_agregar.setLocationRelativeTo(this);
+        jf_agregar.setSize(600, 500);
+        
+        jf_agregar.setResizable(false);
+    }//GEN-LAST:event_bt_agregarActionPerformed
+
+    private void bt_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_regresarActionPerformed
+        
+    }//GEN-LAST:event_bt_regresarActionPerformed
+
+    private void jtxt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_nombreActionPerformed
+
+    private void jtxt_poderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_poderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_poderActionPerformed
+
+    private void jtxt_puntosvidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_puntosvidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_puntosvidaActionPerformed
+
+    private void bt_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearActionPerformed
+        int index =0;
+        index = jcombobox_uni.getSelectedIndex();
+        personajes.add(new Personaje(jtxt_nombre.getText(),
+                jtxt_poder.getText(),
+                jtxt_debilidad.getText(),
+                jcombobox_uni.getItemAt(index),
+                Double.parseDouble(jtxt_fuerza.getText()),
+                Double.parseDouble(jtxt_puntosvida.getText()),
+                Double.parseDouble(jtxt_fisica.getText()),
+                Double.parseDouble(jtxt_mental.getText())));
+    }//GEN-LAST:event_bt_crearActionPerformed
+
+    private void jtxt_mentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mentalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_mentalActionPerformed
+    public DefaultListModel Limpiar(){
+        DefaultListModel modelo = new DefaultListModel();
+        jl_lista.setModel(modelo);
+        return modelo;
+    }
+   
     /**
      * @param args the command line arguments
      */
@@ -135,9 +429,37 @@ public class Fram1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_agregar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bt_crear;
+    private javax.swing.JButton bt_listado;
+    private javax.swing.JButton bt_regresar;
+    private javax.swing.JButton bt_simulaicon;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTree jTree1;
+    private javax.swing.JComboBox<String> jcombobox_uni;
     private javax.swing.JFrame jf_agregar;
+    private javax.swing.JFrame jf_listado;
+    private javax.swing.JFrame jf_sim;
+    private javax.swing.JList<String> jl_lista;
+    private javax.swing.JLabel jlabel_nombreper;
+    private javax.swing.JTextField jtxt_debilidad;
+    private javax.swing.JTextField jtxt_fisica;
+    private javax.swing.JTextField jtxt_fuerza;
+    private javax.swing.JTextField jtxt_mental;
+    private javax.swing.JTextField jtxt_nombre;
+    private javax.swing.JTextField jtxt_poder;
+    private javax.swing.JTextField jtxt_puntosvida;
     // End of variables declaration//GEN-END:variables
+    ArrayList <Personaje> personajes = new ArrayList();
 }
