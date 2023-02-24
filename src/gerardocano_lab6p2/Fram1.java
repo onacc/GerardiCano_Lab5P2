@@ -6,6 +6,7 @@ package gerardocano_lab6p2;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Fram1 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Limpiar();
-        
+        jtxt_displayname.setEditable(false);
         
     }
 
@@ -55,11 +56,12 @@ public class Fram1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jf_listado = new javax.swing.JFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_personajes = new javax.swing.JTree();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jl_lista = new javax.swing.JList<>();
+        jl_personajes = new javax.swing.JList<>();
         bt_regresar = new javax.swing.JButton();
         jlabel_nombreper = new javax.swing.JLabel();
+        jtxt_displayname = new javax.swing.JTextField();
         jf_sim = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
@@ -221,15 +223,20 @@ public class Fram1 extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mortal Kombat");
         treeNode1.add(treeNode2);
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane1.setViewportView(jTree1);
+        jt_personajes.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_personajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_personajesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jt_personajes);
 
-        jl_lista.setModel(new javax.swing.AbstractListModel<String>() {
+        jl_personajes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jl_lista);
+        jScrollPane2.setViewportView(jl_personajes);
 
         bt_regresar.setText("Regresar");
         bt_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,18 +263,23 @@ public class Fram1 extends javax.swing.JFrame {
                         .addGap(58, 58, 58))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
                         .addComponent(jlabel_nombreper)
-                        .addGap(176, 176, 176))))
+                        .addGap(176, 176, 176))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_listadoLayout.createSequentialGroup()
+                        .addComponent(jtxt_displayname, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78))))
         );
         jf_listadoLayout.setVerticalGroup(
             jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jf_listadoLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jlabel_nombreper)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(jtxt_displayname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jf_listadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(bt_regresar)
                 .addContainerGap())
         );
@@ -349,13 +361,14 @@ public class Fram1 extends javax.swing.JFrame {
         setVisible(false);
         jf_agregar.setVisible(true);
         jf_agregar.setLocationRelativeTo(this);
-        jf_agregar.setSize(600, 500);
+        jf_agregar.setSize(400, 500);
         
         jf_agregar.setResizable(false);
     }//GEN-LAST:event_bt_agregarActionPerformed
 
     private void bt_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_regresarActionPerformed
-        
+    jf_listado.setVisible(false);
+    setVisible(true);
     }//GEN-LAST:event_bt_regresarActionPerformed
 
     private void jtxt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_nombreActionPerformed
@@ -381,14 +394,32 @@ public class Fram1 extends javax.swing.JFrame {
                 Double.parseDouble(jtxt_puntosvida.getText()),
                 Double.parseDouble(jtxt_fisica.getText()),
                 Double.parseDouble(jtxt_mental.getText())));
+                jf_agregar.setVisible(false);
+                setVisible(true);
     }//GEN-LAST:event_bt_crearActionPerformed
 
     private void jtxt_mentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mentalActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jtxt_mentalActionPerformed
+
+    private void jt_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseClicked
+         if (evt.isMetaDown()) {
+            //seleccionar un nodo con click derecho
+            int row = jt_personajes.getClosestRowForLocation(
+                    evt.getX(), evt.getY());
+            jt_personajes.setSelectionRow(row);
+            Object v1
+                    = jt_personajes.getSelectionPath().
+                    getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                
+            }
+         }
+    }//GEN-LAST:event_jt_personajesMouseClicked
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
-        jl_lista.setModel(modelo);
+        jl_personajes.setModel(modelo);
         return modelo;
     }
    
@@ -446,14 +477,15 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTree jTree1;
     private javax.swing.JComboBox<String> jcombobox_uni;
     private javax.swing.JFrame jf_agregar;
     private javax.swing.JFrame jf_listado;
     private javax.swing.JFrame jf_sim;
-    private javax.swing.JList<String> jl_lista;
+    private javax.swing.JList<String> jl_personajes;
     private javax.swing.JLabel jlabel_nombreper;
+    private javax.swing.JTree jt_personajes;
     private javax.swing.JTextField jtxt_debilidad;
+    private javax.swing.JTextField jtxt_displayname;
     private javax.swing.JTextField jtxt_fisica;
     private javax.swing.JTextField jtxt_fuerza;
     private javax.swing.JTextField jtxt_mental;
@@ -462,4 +494,5 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_puntosvida;
     // End of variables declaration//GEN-END:variables
     ArrayList <Personaje> personajes = new ArrayList();
+    DefaultMutableTreeNode nodo_seleccionado;
 }
