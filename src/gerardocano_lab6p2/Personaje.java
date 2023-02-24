@@ -100,5 +100,8 @@ public class Personaje {
                  "Mental-> "+mental+"\n"+
                  "HP-> "+hp;
     }
+    public String toString2(){
+        return nombre;
+    }
     
 }

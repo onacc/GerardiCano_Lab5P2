@@ -303,14 +303,8 @@
           <SubComponents>
             <Component class="javax.swing.JList" name="jl_personajes">
               <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultListModel()" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -347,6 +341,30 @@
           </Group>
         </DimensionLayout>
       </Layout>
+    </Container>
+    <Container class="javax.swing.JPopupMenu" name="pop_up">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_Eliminar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_EliminarActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmi_Modificar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmi_ModificarActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
     </Container>
   </NonVisualComponents>
   <Properties>
@@ -432,6 +450,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Simulacion de Batalla"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_simulaiconActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

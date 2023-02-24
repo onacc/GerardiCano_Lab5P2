@@ -6,7 +6,9 @@ package gerardocano_lab6p2;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -63,6 +65,9 @@ public class Fram1 extends javax.swing.JFrame {
         jlabel_nombreper = new javax.swing.JLabel();
         jtxt_displayname = new javax.swing.JTextField();
         jf_sim = new javax.swing.JFrame();
+        pop_up = new javax.swing.JPopupMenu();
+        jmi_Eliminar = new javax.swing.JMenuItem();
+        jmi_Modificar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
         bt_listado = new javax.swing.JButton();
@@ -231,11 +236,7 @@ public class Fram1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jt_personajes);
 
-        jl_personajes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jl_personajes.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(jl_personajes);
 
         bt_regresar.setText("Regresar");
@@ -295,6 +296,22 @@ public class Fram1 extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jmi_Eliminar.setText("jMenuItem1");
+        jmi_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_EliminarActionPerformed(evt);
+            }
+        });
+        pop_up.add(jmi_Eliminar);
+
+        jmi_Modificar.setText("jMenuItem2");
+        jmi_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_ModificarActionPerformed(evt);
+            }
+        });
+        pop_up.add(jmi_Modificar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Lab5P2");
@@ -314,6 +331,11 @@ public class Fram1 extends javax.swing.JFrame {
         });
 
         bt_simulaicon.setText("Simulacion de Batalla");
+        bt_simulaicon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_simulaiconActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,6 +418,12 @@ public class Fram1 extends javax.swing.JFrame {
                 Double.parseDouble(jtxt_mental.getText())));
                 jf_agregar.setVisible(false);
                 setVisible(true);
+        switch(jcombobox_uni.getSelectedIndex()){
+            case 0:
+              
+            break;
+        }
+        System.out.println(personajes);
     }//GEN-LAST:event_bt_crearActionPerformed
 
     private void jtxt_mentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mentalActionPerformed
@@ -404,19 +432,50 @@ public class Fram1 extends javax.swing.JFrame {
 
     private void jt_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseClicked
          if (evt.isMetaDown()) {
-            //seleccionar un nodo con click derecho
-            int row = jt_personajes.getClosestRowForLocation(
-                    evt.getX(), evt.getY());
+            
+            int row = jt_personajes.getClosestRowForLocation(evt.getX(), evt.getY());
             jt_personajes.setSelectionRow(row);
-            Object v1
-                    = jt_personajes.getSelectionPath().
-                    getLastPathComponent();
+            Object v1 = jt_personajes.getSelectionPath().getLastPathComponent();
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            
             if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
+                jtxt_displayname.setText(personaje_seleccionado.getNombre());
+                pop_up.show(evt.getComponent(),evt.getX(), evt.getY());
                 
-            }
-         }
+         }}
     }//GEN-LAST:event_jt_personajesMouseClicked
+
+    private void bt_simulaiconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simulaiconActionPerformed
+        jf_sim.setVisible(true);
+        setVisible(false);
+        jf_sim.setResizable(false);
+        jf_sim.setLocationRelativeTo(this);
+        jf_sim.setSize(500, 500);
+        
+    }//GEN-LAST:event_bt_simulaiconActionPerformed
+
+    private void jmi_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_EliminarActionPerformed
+        int response = JOptionPane.showConfirmDialog(
+                this,
+                "Seguro de Eliminar?",
+                "Confirm",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.OK_OPTION) {
+            DefaultTreeModel m
+                    = (DefaultTreeModel) jt_personajes.getModel();
+            m.removeNodeFromParent(
+                    nodo_seleccionado);
+            m.reload();
+        }
+    }//GEN-LAST:event_jmi_EliminarActionPerformed
+
+    private void jmi_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_ModificarActionPerformed
+        DefaultTreeModel m= (DefaultTreeModel) jt_personajes.getModel();
+        
+    }//GEN-LAST:event_jmi_ModificarActionPerformed
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);
@@ -483,6 +542,8 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JFrame jf_sim;
     private javax.swing.JList<String> jl_personajes;
     private javax.swing.JLabel jlabel_nombreper;
+    private javax.swing.JMenuItem jmi_Eliminar;
+    private javax.swing.JMenuItem jmi_Modificar;
     private javax.swing.JTree jt_personajes;
     private javax.swing.JTextField jtxt_debilidad;
     private javax.swing.JTextField jtxt_displayname;
@@ -492,7 +553,9 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_nombre;
     private javax.swing.JTextField jtxt_poder;
     private javax.swing.JTextField jtxt_puntosvida;
+    private javax.swing.JPopupMenu pop_up;
     // End of variables declaration//GEN-END:variables
     ArrayList <Personaje> personajes = new ArrayList();
     DefaultMutableTreeNode nodo_seleccionado;
+    Personaje personaje_seleccionado;
 }
