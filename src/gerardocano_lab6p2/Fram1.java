@@ -377,6 +377,24 @@ public class Fram1 extends javax.swing.JFrame {
         jf_listado.setLocationRelativeTo(this);
         jf_listado.setSize(700, 600);
         jf_listado.setResizable(false);
+        for (Personaje t : personajes) {
+            switch(t.getUniverso()){
+                case "Marvel":
+                    personaje_seleccionado = new DefaultMutableTreeNode(personajes.get)
+                    
+                break;
+                
+                case "DC":
+                    
+                break;
+                
+                case "Capcom":
+                break;
+                
+                case "Mortal Kombat":
+                break;
+            }
+        }
     }//GEN-LAST:event_bt_listadoActionPerformed
 
     private void bt_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agregarActionPerformed
@@ -423,7 +441,7 @@ public class Fram1 extends javax.swing.JFrame {
               
             break;
         }
-        System.out.println(personajes);
+        //System.out.println(personajes);
     }//GEN-LAST:event_bt_crearActionPerformed
 
     private void jtxt_mentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mentalActionPerformed
@@ -431,7 +449,10 @@ public class Fram1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_mentalActionPerformed
 
     private void jt_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseClicked
-         if (evt.isMetaDown()) {
+        
+            
+         
+        if (evt.isMetaDown()) {
             
             int row = jt_personajes.getClosestRowForLocation(evt.getX(), evt.getY());
             jt_personajes.setSelectionRow(row);
@@ -439,7 +460,9 @@ public class Fram1 extends javax.swing.JFrame {
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
             
             if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                
                 personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
+                
                 jtxt_displayname.setText(personaje_seleccionado.getNombre());
                 pop_up.show(evt.getComponent(),evt.getX(), evt.getY());
                 
