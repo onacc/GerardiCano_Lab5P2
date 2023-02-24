@@ -67,7 +67,6 @@ public class Fram1 extends javax.swing.JFrame {
         jf_sim = new javax.swing.JFrame();
         pop_up = new javax.swing.JPopupMenu();
         jmi_Eliminar = new javax.swing.JMenuItem();
-        jmi_Modificar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         bt_agregar = new javax.swing.JButton();
         bt_listado = new javax.swing.JButton();
@@ -304,14 +303,6 @@ public class Fram1 extends javax.swing.JFrame {
         });
         pop_up.add(jmi_Eliminar);
 
-        jmi_Modificar.setText("jMenuItem2");
-        jmi_Modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_ModificarActionPerformed(evt);
-            }
-        });
-        pop_up.add(jmi_Modificar);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Lab5P2");
@@ -379,10 +370,10 @@ public class Fram1 extends javax.swing.JFrame {
         jf_listado.setResizable(false);
         for (Personaje t : personajes) {
             switch(t.getUniverso()){
-                case "Marvel":
-                    personaje_seleccionado = new DefaultMutableTreeNode(personajes.get)
+                case "Marvel":{
                     
-                break;
+                    
+                }break;
                 
                 case "DC":
                     
@@ -494,11 +485,6 @@ public class Fram1 extends javax.swing.JFrame {
             m.reload();
         }
     }//GEN-LAST:event_jmi_EliminarActionPerformed
-
-    private void jmi_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_ModificarActionPerformed
-        DefaultTreeModel m= (DefaultTreeModel) jt_personajes.getModel();
-        
-    }//GEN-LAST:event_jmi_ModificarActionPerformed
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);
@@ -566,7 +552,6 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JList<String> jl_personajes;
     private javax.swing.JLabel jlabel_nombreper;
     private javax.swing.JMenuItem jmi_Eliminar;
-    private javax.swing.JMenuItem jmi_Modificar;
     private javax.swing.JTree jt_personajes;
     private javax.swing.JTextField jtxt_debilidad;
     private javax.swing.JTextField jtxt_displayname;
