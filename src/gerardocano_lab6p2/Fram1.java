@@ -23,7 +23,7 @@ public class Fram1 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         //Limpiar();
-        //jtxt_displayname.setEditable(false);
+        jtxt_displayname.setEditable(false);
         
     }
 
@@ -242,6 +242,11 @@ public class Fram1 extends javax.swing.JFrame {
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jt_personajesMouseReleased(evt);
+            }
+        });
+        jt_personajes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jt_personajesKeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(jt_personajes);
@@ -527,16 +532,12 @@ public class Fram1 extends javax.swing.JFrame {
                  
                 personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
                 
-                jtxt_displayname.setText(personaje_seleccionado.toString2());
+                //jtxt_displayname.setText(personaje_seleccionado.getNombre());
                 pop_up.show(evt.getComponent(),evt.getX(), evt.getY());
-                modelo.addElement(personaje_seleccionado.toString());
+                modelo.addElement(personaje_seleccionado.toString2());
+                jl_personajes.setModel(modelo);
                 
-         }else{
-        modelo.clear();
-        modelo.addElement(personajes.toString());
-        jl_personajes.setModel(modelo);
-        jtxt_displayname.setText("");
-            }
+         }
         }
     }//GEN-LAST:event_jt_personajesMouseClicked
 
@@ -582,6 +583,29 @@ public class Fram1 extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jt_personajesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_personajesKeyPressed
+      
+       DefaultListModel modelo = (DefaultListModel) jl_personajes.getModel();
+        if (evt.isMetaDown()) {
+        if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                
+                modelo.clear();
+                 
+                personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
+                
+                jtxt_displayname.setText(personaje_seleccionado.getNombre());
+               
+                modelo.addElement(personaje_seleccionado.toString2());
+                jl_personajes.setModel(modelo);
+                
+         }else{
+        modelo.clear();
+        modelo.addElement(personajes.toString());
+        jl_personajes.setModel(modelo);
+        jtxt_displayname.setText("");
+            }}
+    }//GEN-LAST:event_jt_personajesKeyPressed
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);

@@ -94,14 +94,20 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return   "Poder-> "+poder+"\n"  +
+               return  nombre+"\n"+
+                "Poder-> "+poder+"\n"  +
                  "Hablidad Fisica-> "+fisica+"\n"+
                  "Fuerza-> "+debilidad+"\n"+
                  "Mental-> "+mental+"\n"+
                  "HP-> "+hp;
+        
     }
     public String toString2(){
-        return nombre;
+        return   "Poder-> "+poder+"\n"  +
+                 "Hablidad Fisica-> "+fisica+"\n"+
+                 "Fuerza-> "+debilidad+"\n"+
+                 "Mental-> "+mental+"\n"+
+                 "HP-> "+hp;   
     }
     
 }
