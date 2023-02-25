@@ -23,7 +23,7 @@ public class Fram1 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         //Limpiar();
-        jtxt_displayname.setEditable(false);
+        //jtxt_displayname.setEditable(false);
         
     }
 
@@ -65,6 +65,13 @@ public class Fram1 extends javax.swing.JFrame {
         jlabel_nombreper = new javax.swing.JLabel();
         jtxt_displayname = new javax.swing.JTextField();
         jf_sim = new javax.swing.JFrame();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
         pop_up = new javax.swing.JPopupMenu();
         jmi_Eliminar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
@@ -288,15 +295,59 @@ public class Fram1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
+        jList1.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(jList1);
+
+        jList2.setModel(new DefaultListModel());
+        jScrollPane4.setViewportView(jList2);
+
+        jButton1.setText("Batalla");
+
         javax.swing.GroupLayout jf_simLayout = new javax.swing.GroupLayout(jf_sim.getContentPane());
         jf_sim.getContentPane().setLayout(jf_simLayout);
         jf_simLayout.setHorizontalGroup(
             jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jf_simLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jf_simLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(68, Short.MAX_VALUE))
+                    .addGroup(jf_simLayout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))))
+            .addGroup(jf_simLayout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jf_simLayout.setVerticalGroup(
             jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jf_simLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jf_simLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
+                .addGap(9, 9, 9)
+                .addComponent(jButton1)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jmi_Eliminar.setText("Eliminar");
@@ -368,6 +419,7 @@ public class Fram1 extends javax.swing.JFrame {
 
     private void bt_listadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listadoActionPerformed
         DefaultTreeModel m = (DefaultTreeModel) jt_personajes.getModel();
+        
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         setVisible(false);
         jf_listado.setVisible(true);
@@ -385,15 +437,18 @@ public class Fram1 extends javax.swing.JFrame {
                 
                 case "DC":
                     nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
+                    ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodo_seleccionado);
                     
                 break;
                 
                 case "Capcom":
                     nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
+                    ((DefaultMutableTreeNode)raiz.getChildAt(2)).add(nodo_seleccionado);
                 break;
                 
                 case "Mortal Kombat":
                     nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
+                    ((DefaultMutableTreeNode)raiz.getChildAt(3)).add(nodo_seleccionado);
                 break;
             }
         }
@@ -440,6 +495,14 @@ public class Fram1 extends javax.swing.JFrame {
                 setVisible(true);
         
         //System.out.println(personajes);
+        jtxt_poder.setText("");
+        jtxt_debilidad.setText("");
+        jtxt_mental.setText("");
+        jtxt_fuerza.setText("");
+        jtxt_puntosvida.setText("");
+        jtxt_nombre.setText("");
+        jtxt_fisica.setText("");
+        
     }//GEN-LAST:event_bt_crearActionPerformed
 
     private void jtxt_mentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mentalActionPerformed
@@ -448,6 +511,7 @@ public class Fram1 extends javax.swing.JFrame {
 
     private void jt_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseClicked
         DefaultListModel modelo = (DefaultListModel) jl_personajes.getModel();
+        
             
          
         if (evt.isMetaDown()) {
@@ -514,6 +578,10 @@ public class Fram1 extends javax.swing.JFrame {
                 
          }}*/
     }//GEN-LAST:event_jt_personajesMouseReleased
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);
@@ -561,6 +629,9 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JButton bt_listado;
     private javax.swing.JButton bt_regresar;
     private javax.swing.JButton bt_simulaicon;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -572,8 +643,12 @@ public class Fram1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JComboBox<String> jcombobox_uni;
     private javax.swing.JFrame jf_agregar;
     private javax.swing.JFrame jf_listado;
