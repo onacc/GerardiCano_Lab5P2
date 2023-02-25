@@ -528,14 +528,14 @@ public class Fram1 extends javax.swing.JFrame {
             
             if (nodo_seleccionado.getUserObject() instanceof Personaje) {
                 
-                modelo.clear();
+               
                  
                 personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
                 
                 //jtxt_displayname.setText(personaje_seleccionado.getNombre());
                 pop_up.show(evt.getComponent(),evt.getX(), evt.getY());
-                modelo.addElement(personaje_seleccionado.toString2());
-                jl_personajes.setModel(modelo);
+                //modelo.addElement(personaje_seleccionado.toString2());
+                //jl_personajes.setModel(modelo);
                 
          }
         }
@@ -587,7 +587,7 @@ public class Fram1 extends javax.swing.JFrame {
     private void jt_personajesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_personajesKeyPressed
       
        DefaultListModel modelo = (DefaultListModel) jl_personajes.getModel();
-        if (evt.isMetaDown()) {
+        if (evt.getKeyCode()==5) {
         if (nodo_seleccionado.getUserObject() instanceof Personaje) {
                 
                 modelo.clear();
@@ -610,6 +610,11 @@ public class Fram1 extends javax.swing.JFrame {
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);
         return modelo;
+    }
+    static void Imprimir(ArrayList lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.indexOf(i) + " " + lista.get(i));
+        }
     }
    
     /**
