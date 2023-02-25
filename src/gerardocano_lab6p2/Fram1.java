@@ -22,7 +22,7 @@ public class Fram1 extends javax.swing.JFrame {
     public Fram1() {
         initComponents();
         setLocationRelativeTo(null);
-        Limpiar();
+        //Limpiar();
         jtxt_displayname.setEditable(false);
         
     }
@@ -228,9 +228,13 @@ public class Fram1 extends javax.swing.JFrame {
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Mortal Kombat");
         treeNode1.add(treeNode2);
         jt_personajes.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_personajes.setComponentPopupMenu(pop_up);
         jt_personajes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jt_personajesMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jt_personajesMouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(jt_personajes);
@@ -295,7 +299,7 @@ public class Fram1 extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        jmi_Eliminar.setText("jMenuItem1");
+        jmi_Eliminar.setText("Eliminar");
         jmi_Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_EliminarActionPerformed(evt);
@@ -363,6 +367,8 @@ public class Fram1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_listadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listadoActionPerformed
+        DefaultTreeModel m = (DefaultTreeModel) jt_personajes.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
         setVisible(false);
         jf_listado.setVisible(true);
         jf_listado.setLocationRelativeTo(this);
@@ -371,18 +377,23 @@ public class Fram1 extends javax.swing.JFrame {
         for (Personaje t : personajes) {
             switch(t.getUniverso()){
                 case "Marvel":{
-                    
-                    
+                  
+                   nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
+                   ((DefaultMutableTreeNode)raiz.getChildAt(1)).add(nodo_seleccionado);
+                   
                 }break;
                 
                 case "DC":
+                    nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
                     
                 break;
                 
                 case "Capcom":
+                    nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
                 break;
                 
                 case "Mortal Kombat":
+                    nodo_seleccionado = new DefaultMutableTreeNode(t.getNombre());
                 break;
             }
         }
@@ -427,11 +438,7 @@ public class Fram1 extends javax.swing.JFrame {
                 Double.parseDouble(jtxt_mental.getText())));
                 jf_agregar.setVisible(false);
                 setVisible(true);
-        switch(jcombobox_uni.getSelectedIndex()){
-            case 0:
-              
-            break;
-        }
+        
         //System.out.println(personajes);
     }//GEN-LAST:event_bt_crearActionPerformed
 
@@ -440,7 +447,7 @@ public class Fram1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_mentalActionPerformed
 
     private void jt_personajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseClicked
-        
+        DefaultListModel modelo = (DefaultListModel) jl_personajes.getModel();
             
          
         if (evt.isMetaDown()) {
@@ -452,12 +459,21 @@ public class Fram1 extends javax.swing.JFrame {
             
             if (nodo_seleccionado.getUserObject() instanceof Personaje) {
                 
+                modelo.clear();
+                 
                 personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
                 
-                jtxt_displayname.setText(personaje_seleccionado.getNombre());
+                jtxt_displayname.setText(personaje_seleccionado.toString2());
                 pop_up.show(evt.getComponent(),evt.getX(), evt.getY());
+                modelo.addElement(personaje_seleccionado.toString());
                 
-         }}
+         }else{
+        modelo.clear();
+        modelo.addElement(personajes.toString());
+        jl_personajes.setModel(modelo);
+        jtxt_displayname.setText("");
+            }
+        }
     }//GEN-LAST:event_jt_personajesMouseClicked
 
     private void bt_simulaiconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simulaiconActionPerformed
@@ -470,21 +486,34 @@ public class Fram1 extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_simulaiconActionPerformed
 
     private void jmi_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_EliminarActionPerformed
-        int response = JOptionPane.showConfirmDialog(
-                this,
-                "Seguro de Eliminar?",
-                "Confirm",
-                JOptionPane.YES_NO_OPTION,
+        int response = JOptionPane.showConfirmDialog(this,"Seguro de Eliminar?",
+                "Confirm",JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
 
         if (response == JOptionPane.OK_OPTION) {
-            DefaultTreeModel m
-                    = (DefaultTreeModel) jt_personajes.getModel();
-            m.removeNodeFromParent(
-                    nodo_seleccionado);
+            DefaultTreeModel m = (DefaultTreeModel) jt_personajes.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
             m.reload();
         }
     }//GEN-LAST:event_jmi_EliminarActionPerformed
+
+    private void jt_personajesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personajesMouseReleased
+        /*if (evt.isPopupTrigger()) {
+            
+            int row = jt_personajes.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_personajes.setSelectionRow(row);
+            Object v1 = jt_personajes.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            
+            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                
+                personaje_seleccionado= (Personaje) nodo_seleccionado.getUserObject();
+                
+                jtxt_displayname.setText(personaje_seleccionado.getNombre());
+                pop_up.show(jf_listado,evt.getX(), evt.getY());
+                
+         }}*/
+    }//GEN-LAST:event_jt_personajesMouseReleased
     public DefaultListModel Limpiar(){
         DefaultListModel modelo = new DefaultListModel();
         jl_personajes.setModel(modelo);
